@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { FORM_CATEGORIES } from './categories';
 import './ProjectForm.css';
+import { request } from '../api';
 
-const API_URL = 'http://localhost:18080';
 
 function AddProject({ user, onLogout }) {
   const navigate = useNavigate();
@@ -49,39 +49,30 @@ function AddProject({ user, onLogout }) {
     if (!formData.contact_name.trim()) return setError('Contact name is required');
     if (!formData.contact_email.trim()) return setError('Contact email is required');
 
-    setLoading(true);
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`${API_URL}/add_project`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          title: formData.title,
-          description: formData.description,
-          skills: formData.skills,
-          category: formData.categories,
-          contact_name: formData.contact_name,
-          contact_email: formData.contact_email,
-          contact_no: parseInt(formData.contact_no) || 0,
-          status: formData.status,
-          team_size: parseInt(formData.team_size) || 0,
-        }),
-      });
+  setLoading(true);
+  try {
+    await request('/add_project', 'POST', {
+      title: formData.title,
+      description: formData.description,
+      skills: formData.skills,
+      category: formData.categories,
+      contact_name: formData.contact_name,
+      contact_email: formData.contact_email,
+      contact_no: parseInt(formData.contact_no) || 0,
+      status: formData.status,
+      team_size: parseInt(formData.team_size) || 0,
+    });
 
-      if (!response.ok) throw new Error('Failed to add project');
-      setSuccess('Project added successfully!');
-      setTimeout(() => navigate('/dashboard'), 1500);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    setSuccess('Project added successfully!');
+    setTimeout(() => navigate('/dashboard'), 1500);
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
-  return (
+return (
     <div className="project-form-container">
       <Header user={user} onLogout={onLogout} />
       <main className="form-main">

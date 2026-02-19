@@ -3,7 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { CheckCircle2, XCircle, Loader } from 'lucide-react';
 import './Auth.css';
 
-const API_URL = 'http://localhost:18080';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function VerifyEmail() {
   const [searchParams]      = useSearchParams();

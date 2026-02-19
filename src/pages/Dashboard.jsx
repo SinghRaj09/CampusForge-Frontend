@@ -4,8 +4,9 @@ import Header from '../components/Header';
 import ProjectCard from '../components/ProjectCard';
 import { PROJECT_CATEGORIES } from './categories';
 import './Dashboard.css';
+import { request } from '../api';
 
-const API_URL = 'http://localhost:18080';
+
 
 function Dashboard({ user, onLogout }) {
   const [projects, setProjects] = useState([]);
@@ -31,12 +32,7 @@ function Dashboard({ user, onLogout }) {
   const fetchProjects = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token');
-      const response = await fetch(`${API_URL}/projects`, {
-        headers: { 'Authorization': `Bearer ${token}` },
-      });
-      if (!response.ok) throw new Error('Failed to fetch projects');
-      const data = await response.json();
+      const data = await request('/projects');
       setProjects(data);
     } catch (err) {
       setError(err.message);
@@ -85,10 +81,10 @@ function Dashboard({ user, onLogout }) {
     value === 'all'
       ? projects.length
       : projects.filter(p =>
-          Array.isArray(p.category)
-            ? p.category.includes(value)
-            : p.category === value
-        ).length;
+        Array.isArray(p.category)
+          ? p.category.includes(value)
+          : p.category === value
+      ).length;
 
   const scrollChips = (dir) => {
     if (chipsRef.current) {

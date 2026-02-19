@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import './Auth.css';
+import { request } from '../api';
 
-const API_URL = 'http://localhost:18080';
+
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
@@ -19,26 +20,24 @@ function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+      const data = await request('/login', 'POST', {
+        email,
+        password
       });
 
-      const text = await response.text();
-      let data = {};
-      try { data = JSON.parse(text); } catch { data = { message: text }; }
+      onLogin(
+        { email: data.email, full_name: data.full_name },
+        data.token
+      );
 
-      if (!response.ok) throw new Error(data.message || data.error || 'Login failed');
-
-      onLogin({ email: data.email, full_name: data.full_name }, data.token);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="auth-content">

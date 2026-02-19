@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, ArrowRight, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 import './Auth.css';
+import { request } from '../api';
 
-const API_URL = 'http://localhost:18080';
+
 
 function ForgotPassword() {
   const [email, setEmail]         = useState('');
@@ -16,15 +17,12 @@ function ForgotPassword() {
     e.preventDefault();
     setError('');
     setLoading(true);
+
     try {
-      await fetch(`${API_URL}/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
+      await request('/forgot-password', 'POST', { email });
       setSubmitted(true);
-    } catch {
-      setError('Network error. Please try again.');
+    } catch (err) {
+      setError(err.message || 'Network error. Please try again.');
     } finally {
       setLoading(false);
     }

@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { Lock, Eye, EyeOff, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 import './Auth.css';
 
-const API_URL = 'http://localhost:18080';
+const API_URL = import.meta.env.VITE_API_URL;
 
 function ResetPassword() {
   const [searchParams]          = useSearchParams();
