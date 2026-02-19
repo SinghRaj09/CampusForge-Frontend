@@ -1,5 +1,7 @@
 const BASE_URL = import.meta.env.VITE_API_URL;
 
+console.log("API URL:", BASE_URL); 
+
 export async function request(endpoint, method = "GET", body = null) {
   const token = localStorage.getItem("token");
 
