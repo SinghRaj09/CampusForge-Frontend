@@ -1,0 +1,364 @@
+/* ── Card base ── */
+.project-card {
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  transition: transform .25s, box-shadow .25s;
+  animation: scaleUp 0.4s ease-out;
+  border: none;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(0,0,0,.55);
+}
+
+/* ── Yellow card ── */
+.card-yellow {
+  background: #9b9122;
+}
+.card-yellow .card-title,
+.card-yellow .section-label,
+.card-yellow .sidebar-label {
+  color: #000000;
+}
+.card-yellow .category-badge {
+  background: #d8d8d8;
+  color: #1a1a2e;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+.card-yellow .skill-tag {
+  background: #d8d8d8;
+  color: #000000;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+.card-yellow .section-label {
+  color: #1a1a2e;
+}
+
+/* ── Purple card ── */
+.card-purple {
+  background: #9371b7;
+}
+.card-purple .card-title,
+.card-purple .section-label {
+  color: #000000;
+}
+.card-purple .category-badge {
+  background: #d8d8d8;
+  color: #000000;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+.card-purple .skill-tag {
+  background: #d8d8d8;
+  color: #0d0d0d;
+  border: 1px solid rgba(0,0,0,0.18);
+}
+.card-purple .section-label {
+  color: #1a1a2e;
+}
+
+/* ── Top section ── */
+.card-top {
+  padding: 10px 22px 18px;
+}
+
+.status-badge {
+  float: right;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-top: 2px;
+}
+.status-live {
+  background: #1a3a2a;
+  color: #3ddc84;
+  border: 1px solid #3ddc8455;
+}
+.status-expired {
+  background: rgba(239,68,68,.15);
+  color: #7f1d1d;
+  border: 1px solid rgba(239,68,68,.3);
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  clear: both;
+  word-break: break-word;
+}
+
+/* ── Category badges ── */
+.category-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+.category-badge {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+/* ── Divider ── */
+.card-divider {
+  height: 0px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 100%);
+  margin: 0 22px;
+  border: none;
+}
+
+/* ── Skills ── */
+.card-skills {
+  padding: 16px 22px;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.skill-tag {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 7px;
+}
+
+/* ── Card action buttons ── */
+.card-actions {
+  padding: 6px 22px 14px;
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.card-owner-actions {
+  padding: 14px 22px 18px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+.btn {
+  flex: 1;
+  padding: 11px 8px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: transform .15s, box-shadow .15s, background .15s;
+  text-align: center;
+}
+.btn:active { transform: scale(.96); }
+
+/* Read Description on YELLOW card → Purple button */
+.btn-read-yellow {
+  background: #9371b7;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(168,85,247,0.4);
+}
+.btn-read-yellow:hover {
+  background: #9333ea;
+  box-shadow: 0 8px 26px rgba(168,85,247,0.5);
+}
+
+/* Read Description on PURPLE card → Yellow button */
+.btn-read-purple {
+  background: #9b9122;
+  color: #1a1a2e;
+  box-shadow: 0 6px 20px rgba(245,230,66,0.4);
+}
+.btn-read-purple:hover {
+  background: #ede03a;
+  box-shadow: 0 8px 26px rgba(245,230,66,0.5);
+}
+
+/* Contact Info button on cards */
+.btn-contact {
+  background: rgba(0,0,0,0.15);
+  color: #ffffff;
+  border: 1.5px solid #ffffff;
+  font-weight: 700;
+}
+.btn-contact:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Secondary button inside overlays */
+.btn-secondary {
+  background: transparent;
+  color: #c0c0d8;
+  border: 1px solid #2e2e40;
+}
+.btn-secondary:hover { background: #1e1e2a; color: #f0f0f5; }
+
+.btn-primary {
+  background: #3ddc84;
+  color: #0a1f14;
+  box-shadow: 0 6px 20px #3ddc8430;
+}
+.btn-primary:hover { background: #50e892; }
+
+/* Edit — solid blue, forced over any card color */
+.btn-edit,
+.card-yellow .btn-edit,
+.card-purple .btn-edit {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.btn-edit:hover,
+.card-yellow .btn-edit:hover,
+.card-purple .btn-edit:hover {
+  background: #2563eb !important;
+}
+
+/* Delete — solid red, forced over any card color */
+.btn-delete,
+.card-yellow .btn-delete,
+.card-purple .btn-delete {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.btn-delete:hover,
+.card-yellow .btn-delete:hover,
+.card-purple .btn-delete:hover {
+  background: #dc2626 !important;
+}
+
+/* ── Overlay ── */
+.overlay-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1.5rem;
+}
+
+.overlay-card {
+  background: #16161d;
+  border: 1px solid #2a2a35;
+  border-radius: 18px;
+  width: 360px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,.7);
+  padding: 24px;
+  position: relative;
+  animation: overlayIn .28s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes overlayIn {
+  from { transform: translateY(20px) scale(.97); opacity: 0; }
+  to   { transform: translateY(0) scale(1);     opacity: 1; }
+}
+
+.overlay-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 30px; height: 30px;
+  background: #222230;
+  border: 1px solid #2e2e40;
+  border-radius: 50%;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s;
+  line-height: 1;
+}
+.overlay-close:hover { background: #2e2e40; color: #f0f0f5; }
+
+.overlay-title {
+  font-size: 18px;
+  font-weight: 650;
+  color: #f0f0f5;
+  margin-bottom: 14px;
+  padding-right: 36px;
+  line-height: 1.4;
+}
+
+.overlay-body {
+  font-size: 16px;
+  color: #9898b8;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.overlay-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+/* ── Contact rows ── */
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+}
+.contact-label {
+  font-weight: 700;
+  color: #f0f0f5;
+  min-width: 52px;
+  font-size: 12px;
+  padding-top: 1px;
+}
+.contact-val {
+  color: #6ab4ff;
+  word-break: break-all;
+  text-decoration: none;
+}
+.contact-val.name { color: #f0f0f5; }
+.contact-val:hover { text-decoration: underline; }
+
+.no-contact {
+  color: #5a5a7a;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.overlay-card::-webkit-scrollbar { width: 4px; }
+.overlay-card::-webkit-scrollbar-track { background: transparent; }
+.overlay-card::-webkit-scrollbar-thumb { background: #2e2e40; border-radius: 4px; }
+
+@keyframes scaleUp {
+  from { transform: scale(.97); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .card-title { font-size: 20px; }
+  .overlay-card { width: 100%; }
+}
