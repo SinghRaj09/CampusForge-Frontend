@@ -2,12 +2,45 @@ import React, { useEffect, useState, useRef } from 'react';
 import './AuthLayout.css';
 
 const CARDS = [
-  { id: 0, type: 'highlight', color: '#c084fc', text: 'Build.\nConnect.\nStand out.', dots: true },
-  { id: 1, type: 'logo',      color: '#c084fc', icon: true },
-  { id: 2, type: 'text',      color: '#fde68a', label: 'Find projects\nthat match\nyour skills', plus: true },
-  { id: 3, type: 'text',      color: '#fde68a', label: 'Real projects.\nReal resume.\nReal impact.', plus: true },
-  { id: 4, type: 'dark',      color: '#1a2235' },
-  { id: 5, type: 'dark',      color: '#0f1624' },
+  {
+    id: 0,
+    type: 'highlight',
+    color: '#C084FC',
+    text: 'Build.\nConnect.\nStand out.',
+    dots: true,
+  },
+  {
+    id: 1,
+    type: 'logo',
+    color: '#C084FC',
+    icon: true,
+  },
+  {
+    id: 2,
+    type: 'text',
+    color: '#F5E642',
+    label: 'Find projects\nthat match\nyour skills',
+  },
+  {
+    id: 3,
+    type: 'text',
+    color: '#F5E642',
+    label: 'Real projects.\nReal resume.\nReal impact.',
+  },
+  {
+    id: 4,
+    type: 'text',
+    color: '#C084FC',
+    label: 'Join a team.\nShip together.',
+    iconType: 'team',
+  },
+  {
+    id: 5,
+    type: 'text',
+    color: '#F5E642',
+    label: 'Track progress.\nStay consistent.',
+    iconType: 'pulse',
+  },
 ];
 
 const SLOT_POS = [
@@ -30,6 +63,29 @@ function getTranslate(fromSlot, toSlot, cellW, cellH, gap) {
   };
 }
 
+function TeamIcon() {
+  return (
+    <div className="card-icon-small">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    </div>
+  );
+}
+
+function PulseIcon() {
+  return (
+    <div className="card-icon-small">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      </svg>
+    </div>
+  );
+}
+
 function CardContent({ card }) {
   return (
     <>
@@ -38,16 +94,17 @@ function CardContent({ card }) {
           {Array.from({ length: 25 }).map((_, i) => <span key={i} className="dot" />)}
         </div>
       )}
-      {card.plus && <span className="card-plus">+</span>}
       {card.icon && (
         <div className="card-icon">
-          <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-            <path d="M6 34 L16 20 L26 28 L38 12" stroke="#0f172a" strokeWidth="4.5"
+          <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+            <path d="M6 34 L16 20 L26 28 L38 12" stroke="#000000" strokeWidth="4.5"
               strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="38" cy="12" r="5" fill="#0f172a"/>
+            <circle cx="38" cy="12" r="5" fill="#000000"/>
           </svg>
         </div>
       )}
+      {card.iconType === 'team'  && <TeamIcon />}
+      {card.iconType === 'pulse' && <PulseIcon />}
       {card.text  && <p className="card-main-text">{card.text}</p>}
       {card.label && <p className="card-label-text">{card.label}</p>}
     </>
@@ -105,9 +162,10 @@ function CardPanel() {
         return (
           <div
             key={`slot-${slotIdx}`}
-            className={`card-cell card-type-${card.type}`}
+            className={`card-cell`}
             style={{
               '--card-color': card.color,
+              backgroundColor: card.color,
               transform:  t ? `translate(${t.dx}px, ${t.dy}px)` : 'translate(0,0)',
               transition: t
                 ? 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)'
@@ -128,14 +186,11 @@ export default function AuthLayout({ children }) {
     <div className="auth-split">
       <div className="auth-panel-left">
         <div className="panel-inner">
-
           <div className="panel-brand">
             <span className="brand-campus">Campus</span>
             <span className="brand-forge">Forge</span>
           </div>
-
           <CardPanel />
-
           <p className="panel-tagline">Where campus projects come alive</p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Syne:wght@700;800&family=Space+Mono:wght@700&display=swap');
 
 /* ─── Split shell ──────────────────────────────────────── */
 .auth-split {
@@ -26,8 +26,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(34, 211, 238, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 70% 70%, rgba(253, 230, 138, 0.04) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(34, 211, 238, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 70% 70%, rgba(245, 230, 66, 0.03) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -42,28 +42,22 @@
   max-width: 420px;
 }
 
-/* ─── Brand logo text ───────────────────────────────────── */
+/* ─── Brand ─────────────────────────────────────────────── */
 .panel-brand {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0;
-
-  /* Override any old text styles */
   font-family: 'Space Mono', monospace;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  text-transform: none;          /* remove old uppercase */
+  align-self: flex-start;
 }
 
-/* "Campus" — cyan */
 .panel-brand .brand-campus {
   color: #22d3ee;
   filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
 }
 
-/* "Forge" — white */
 .panel-brand .brand-forge {
   color: #e6edf3;
 }
@@ -74,6 +68,7 @@
   color: rgba(34, 211, 238, 0.3);
   letter-spacing: 0.06em;
   text-align: center;
+  align-self: flex-start;
 }
 
 /* ─── 2×3 card grid ─────────────────────────────────────── */
@@ -92,24 +87,17 @@
 /* ─── Base card cell ────────────────────────────────────── */
 .card-cell {
   border-radius: 20px;
-  background: var(--card-color);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
   padding: 18px;
   will-change: transform;
+  transition: box-shadow 0.3s ease;
 }
 
 .card-cell:hover {
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
-}
-
-/* ─── Dark glass cards ───────────────────────────────────── */
-.card-type-dark {
-  background: rgba(255, 255, 255, 0.025) !important;
-  border: 1px solid rgba(255, 255, 255, 0.055);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.35);
 }
 
 /* ─── Dot grid ───────────────────────────────────────────── */
@@ -132,19 +120,8 @@
   align-self: center;
 }
 
-/* ─── Plus icon ──────────────────────────────────────────── */
-.card-plus {
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  font-size: 22px;
-  font-weight: 300;
-  color: rgba(0, 0, 0, 0.38);
-  line-height: 1;
-}
-
-/* ─── Logo card ──────────────────────────────────────────── */
-.card-type-logo {
+/* ─── Icon (logo card — centered) ───────────────────────── */
+.card-cell.card-type-logo {
   align-items: center;
   justify-content: center;
 }
@@ -153,33 +130,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
   background: rgba(0, 0, 0, 0.14);
 }
 
-/* ─── Card main text "Connect. Collaborate. Create." ────── */
+/* ─── Small icon (top-left of card) ─────────────────────── */
+.card-icon-small {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Card headline text ─────────────────────────────────── */
 .card-main-text {
-  font-family: 'DM Serif Display', serif;
-  font-size: 21px;
-  line-height: 1.25;
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
   white-space: pre-line;
   position: relative;
   z-index: 1;
-  color: #0f172a;
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  background-clip: unset;
+  color: #000000;   /* bright black */
 }
 
 /* ─── Card label text ────────────────────────────────────── */
 .card-label-text {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.45;
-  color: rgba(0, 0, 0, 0.62);
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #000000;   /* bright black — was rgba(0,0,0,0.62) */
   white-space: pre-line;
   position: relative;
   z-index: 1;
@@ -214,6 +203,6 @@
   .card-grid        { gap: 7px; max-height: 250px; border-radius: 18px; }
   .card-cell        { border-radius: 14px; padding: 12px; }
   .card-main-text   { font-size: 16px; }
-  .card-label-text  { font-size: 12px; }
+  .card-label-text  { font-size: 11px; }
   .auth-panel-right { padding: 24px 16px; }
 }
