@@ -17,47 +17,53 @@
 
 /* ── Yellow card ── */
 .card-yellow {
-  background: #9b9122;
+  background: #F5E642;
 }
 .card-yellow .card-title,
 .card-yellow .section-label,
 .card-yellow .sidebar-label {
-  color: #000000;
+  color: #111111;
 }
 .card-yellow .category-badge {
-  background: #d8d8d8;
-  color: #1a1a2e;
+  background: rgba(0,0,0,0.12);
+  color: #111111;
   border: 1px solid rgba(0,0,0,0.15);
 }
 .card-yellow .skill-tag {
-  background: #d8d8d8;
-  color: #000000;
+  background: rgba(0,0,0,0.1);
+  color: #111111;
   border: 1px solid rgba(0,0,0,0.15);
 }
 .card-yellow .section-label {
-  color: #1a1a2e;
+  color: #111111;
+}
+.card-yellow .card-divider {
+  background: linear-gradient(90deg, rgba(0,0,0,0.12) 0%, transparent 100%);
 }
 
 /* ── Purple card ── */
 .card-purple {
-  background: #9371b7;
+  background: #C084FC;
 }
 .card-purple .card-title,
 .card-purple .section-label {
-  color: #000000;
+  color: #111111;
 }
 .card-purple .category-badge {
-  background: #d8d8d8;
-  color: #000000;
-  border: 1px solid rgba(0,0,0,0.2);
-}
-.card-purple .skill-tag {
-  background: #d8d8d8;
-  color: #0d0d0d;
+  background: rgba(0,0,0,0.12);
+  color: #111111;
   border: 1px solid rgba(0,0,0,0.18);
 }
+.card-purple .skill-tag {
+  background: rgba(0,0,0,0.1);
+  color: #111111;
+  border: 1px solid rgba(0,0,0,0.15);
+}
 .card-purple .section-label {
-  color: #1a1a2e;
+  color: #111111;
+}
+.card-purple .card-divider {
+  background: linear-gradient(90deg, rgba(0,0,0,0.12) 0%, transparent 100%);
 }
 
 /* ── Top section ── */
@@ -88,7 +94,7 @@
 
 .card-title {
   font-size: 22px;
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1.3;
   margin-bottom: 16px;
   clear: both;
@@ -104,7 +110,7 @@
 }
 .category-badge {
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: .07em;
   text-transform: uppercase;
   padding: 5px 10px;
@@ -113,8 +119,7 @@
 
 /* ── Divider ── */
 .card-divider {
-  height: 0px;
-  background: linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 100%);
+  height: 1px;
   margin: 0 22px;
   border: none;
 }
@@ -127,7 +132,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -139,8 +144,8 @@
   gap: 7px;
 }
 .skill-tag {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   padding: 5px 12px;
   border-radius: 7px;
 }
@@ -177,19 +182,20 @@
 
 /* Read Description on YELLOW card → Purple button */
 .btn-read-yellow {
-  background: #9371b7;
-  color: #ffffff;
-  box-shadow: 0 6px 20px rgba(168,85,247,0.4);
+  background: #C084FC;
+  color: #111111;
+  box-shadow: 0 6px 20px rgba(192,132,252,0.4);
 }
 .btn-read-yellow:hover {
-  background: #9333ea;
+  background: #a855f7;
+  color: #ffffff;
   box-shadow: 0 8px 26px rgba(168,85,247,0.5);
 }
 
 /* Read Description on PURPLE card → Yellow button */
 .btn-read-purple {
-  background: #9b9122;
-  color: #1a1a2e;
+  background: #F5E642;
+  color: #111111;
   box-shadow: 0 6px 20px rgba(245,230,66,0.4);
 }
 .btn-read-purple:hover {
@@ -197,15 +203,15 @@
   box-shadow: 0 8px 26px rgba(245,230,66,0.5);
 }
 
-/* Contact Info button on cards */
+/* Contact Info button */
 .btn-contact {
   background: rgba(0,0,0,0.15);
-  color: #ffffff;
-  border: 1.5px solid #ffffff;
+  color: #111111;
+  border: 1.5px solid rgba(0,0,0,0.3);
   font-weight: 700;
 }
 .btn-contact:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.22);
 }
 
 /* Secondary button inside overlays */
@@ -223,7 +229,7 @@
 }
 .btn-primary:hover { background: #50e892; }
 
-/* Edit — solid blue, forced over any card color */
+/* Edit */
 .btn-edit,
 .card-yellow .btn-edit,
 .card-purple .btn-edit {
@@ -237,7 +243,7 @@
   background: #2563eb !important;
 }
 
-/* Delete — solid red, forced over any card color */
+/* Delete */
 .btn-delete,
 .card-yellow .btn-delete,
 .card-purple .btn-delete {
@@ -300,7 +306,7 @@
 
 .overlay-title {
   font-size: 18px;
-  font-weight: 650;
+  font-weight: 700;
   color: #f0f0f5;
   margin-bottom: 14px;
   padding-right: 36px;
